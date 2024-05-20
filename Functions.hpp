@@ -1,0 +1,8 @@
+//
+// Created by Scooter on 5/18/2024.
+//
+
+#ifndef DNDCHARACTERS_FUNCTIONS_HPP
+#define DNDCHARACTERS_FUNCTIONS_HPP
+
+#endif //DNDCHARACTERS_FUNCTIONS_HPP
