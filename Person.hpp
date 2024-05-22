@@ -11,14 +11,14 @@ class Person {
 private:
     std::string firstName;
     std::string lastName;
-    int age;
+    int age = 0;
 public:
     // Constructors
-    Person() : firstName(""), lastName(""), age(0){};
+    Person()  = default;
     Person(const std::string& firstName, const std::string& lastName, int age)\
-    : firstName(firstName), lastName(lastName), age(age) {};
+    : firstName(firstName), lastName(lastName), age(age) {}
 
-    // Deconstructor
+    // Destructor
     ~Person() {};
 
     // Getters
@@ -33,13 +33,13 @@ public:
     }
 
     // Setters
-    void setFirst(const std::string& setFirst){
-        this->firstName = setFirst;
+    void setFirst(const std::string& setFirst) {
+        firstName = setFirst;
     }
-    void setLast(const std::string& setLast){
+    void setLast(const std::string& setLast) {
         this->lastName = setLast;
     };
-    void setAge(int setAge){
+    void setAge(int setAge) {
         this->age = setAge;
     }
 
