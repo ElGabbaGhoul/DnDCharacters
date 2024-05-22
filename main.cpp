@@ -5,7 +5,9 @@ int main() {
     int age = getInteger();
     std::cout << "Player is: " << age << " years old." << std::endl;
 
-    std::string player = getFirst();
+    std::string first = getFirst();
+    std::string last = getLast();
+    std::cout << "Greetings, " << first << " " << last << "!" << std::endl;
 // Ask how many players are in the game
 // GetInteger to enter a value between 5 and 10
 // Create dynamic array of player variables

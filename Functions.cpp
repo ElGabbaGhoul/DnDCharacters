@@ -43,7 +43,6 @@ bool isAllChars(const std::string &str) {
     return true;
 }
 
-
 std::string getFirst() {
     std::string firstName;
     bool validFirst = false;
@@ -73,3 +72,31 @@ std::string getFirst() {
     return firstName;
 }
 
+std::string getLast() {
+    std::string lastName;
+    bool validLast = false;
+
+    while (!validLast) {
+        std::cout << "What is your last name?" << std::endl;
+        std::cin >> lastName;
+
+        if (!lastName.empty()) {
+            if (!isAllChars(lastName)) {
+                std::cin.clear();
+                std::cin.ignore(50000, '\n');
+                std::cerr << "Error: No special characters in your name please."<< std::endl;
+                std::cerr << "Your first name should be Alphanumeric only (A-Z, a-z)." << std::endl;
+            } else {
+                for (char &c : lastName) {
+                    c = std::tolower(static_cast<unsigned char>(c));
+                }
+                lastName[0] = std::toupper(static_cast<unsigned char>(lastName[0]));
+
+                std::cout << lastName << std::endl;
+                validLast = true;
+            }
+        }
+    }
+
+    return lastName;
+}
