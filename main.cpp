@@ -2,8 +2,10 @@
 #include "Functions.hpp"
 
 int main() {
-int age = getInteger();
+    int age = getInteger();
     std::cout << "Player is: " << age << " years old." << std::endl;
+
+    std::string player = getFirst();
 // Ask how many players are in the game
 // GetInteger to enter a value between 5 and 10
 // Create dynamic array of player variables
