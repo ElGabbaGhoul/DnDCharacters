@@ -10,13 +10,16 @@
 
 // Required functions
 int getInteger();
+int getInteger(int min, int max);
 Player* createPlayer();
 void displayPlayers();
 
 // Helper functions
 bool isAllChars(const std::string& str);
+bool isNumeric(const std::string& str);
 std::string getFirst();
 std::string getLast();
 std::string getCharClass();
+
 
 #endif //DNDCHARACTERS_FUNCTIONS_HPP

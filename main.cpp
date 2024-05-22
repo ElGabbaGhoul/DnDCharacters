@@ -2,12 +2,20 @@
 #include "Functions.hpp"
 
 int main() {
-    int age = getInteger();
-    std::cout << "Player is: " << age << " years old." << std::endl;
+    int party = getInteger(5,10);
+    if (!party == 0) {
+        std::cout << "Party of: " << party << " adventurers!" << std::endl;
+        int age = getInteger();
+        std::cout << "Player is: " << age << " years old." << std::endl;
 
-    std::string first = getFirst();
-    std::string last = getLast();
-    std::cout << "Greetings, " << first << " " << last << "!" << std::endl;
+        std::string first = getFirst();
+        std::string last = getLast();
+        std::cout << "Greetings, " << first << " " << last << "!" << std::endl;
+    } else {
+        std::cerr << "Error entering party value. Please try again." << std::endl;
+    }
+
+
 // Ask how many players are in the game
 // GetInteger to enter a value between 5 and 10
 // Create dynamic array of player variables
