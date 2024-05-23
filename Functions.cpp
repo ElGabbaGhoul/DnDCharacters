@@ -83,6 +83,50 @@ int getInteger(int min, int max) {
     return players;
 }
 
+Player* createPlayer(const std::string &firstName, std::string &lastName, int &age, int playerType) {
+    switch (playerType) {
+        case 1:
+            return new Wizard(firstName, lastName, age);
+        case 2:
+            return new Ranger(firstName, lastName, age);
+        case 3:
+            return new Rogue(firstName, lastName, age);
+        case 4:
+            return new Priest(firstName, lastName, age);
+        default:
+            std::cerr << "Invalid player class." << std::endl;
+        return nullptr;
+    }
+}
+
+Player** createPlayers(int &count) {
+    Player** players = new Player*[count];
+
+    for (int i = 0; i < count;) {
+        int age = getInteger();
+        std::string first = getFirst();
+        std::string last = getLast();
+        int classNum = classSelect();
+
+        Player* player = createPlayer(first, last, age, classNum);
+        if (player != nullptr) {
+            players[i] = player;
+            i++;
+        }
+    }
+return players;
+}
+
+void displayPlayers(Player** players, int party) {
+    for (int i = 0; i < party; i++) {
+        std::cout << "Player " << i+1 << ": " << players[i]->getFirst()
+        << " " << players[i]->getLast() << ", age: " << players[i]->getAge()
+        << ", has chosen: " << players[i]->getClassName() << ". Which: "
+        << players[i]->getAction() << "." << std::endl;
+    }
+}
+
+
 bool isAllChars(const std::string &str) {
     for (char c : str) {
         if (!std::isalpha(c)) {
@@ -158,4 +202,43 @@ std::string getLast() {
     }
 
     return lastName;
+}
+
+int classSelect() {
+    int classNum = 0;
+    bool validClass = false;
+
+    while (!validClass) {
+        std::cout << "Which class do you want to play?" << std::endl;
+        std::cout << "(1:Wizard, 2:Ranger, 3:Rogue, 4: Priest)" << std::endl;
+
+        std::string input;
+        std::cin >> input;
+
+        if (isNumeric(input)) {
+            try {
+                classNum = std::stoi(input);
+
+                if (classNum >= 1 && classNum <= 4) {
+                    validClass = true;
+                } else {
+                    std::cerr << "Error: Invalid input type." << std::endl;
+                    std::cerr << "Please enter an INTEGER between 1 and 4." << std::endl;
+                }
+            } catch (const std::invalid_argument&) {
+                std::cerr << "Error: Invalid input type." << std::endl;
+                std::cerr << "Please enter an INTEGER between 1 and 4." << std::endl;
+            } catch (const std::out_of_range&) {
+                std::cerr << "Error: input out of range." << std::endl;
+                std::cerr << "Please enter an INTEGER between 1 and 4." << std::endl;
+            }
+        } else {
+            std::cerr << "Error: Invalid input type." << std::endl;
+            std::cerr << "Please enter an INTEGER between 1 and 4." << std::endl;
+        }
+        std::cin.clear();
+        std::cin.ignore(50000, '\n');
+    }
+
+    return classNum;
 }

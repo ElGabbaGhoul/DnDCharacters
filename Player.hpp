@@ -28,6 +28,18 @@ public:
     virtual std::string getClassName() const = 0;
     virtual std::string getAction() const = 0;
 
+    std::string getFirst() const {
+        return person->getFirst();
+    }
+
+    std::string getLast() const {
+        return person->getLast();
+    }
+
+    int getAge() const {
+        return person->getAge();
+    }
+
 };
 
 class Wizard : public Player {
